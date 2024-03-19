@@ -1,5 +1,9 @@
 package main
 
+import (
+    "encoding/json" 
+)
+
 // TableName returned will be used to create the table in db
 func (KConnectSink) TableName() string {
 	return "kconnect_sinks"
