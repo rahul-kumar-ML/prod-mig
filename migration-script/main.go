@@ -23,8 +23,8 @@ func updateDatabaseAzure(db *gorm.DB, sink KConnectSink) error {
 	configMap["azureblob.storage.account.name"] = "apmmanagerstorageacc"
 	configMap["azureblob.block.size"] = 5242880
 
-	// Convert updateData to JSON
-	updateJSON, err := json.Marshal(configMap)
+	// Convert updateData to JSON with proper formatting
+	updateJSON, err := json.MarshalIndent(configMap, "", "  ")
 	if err != nil {
 		return err
 	}
