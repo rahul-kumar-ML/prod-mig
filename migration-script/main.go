@@ -30,7 +30,7 @@ func updateDatabaseAzure(db *gorm.DB, sink KConnectSink) error {
 	}
 
 	// Perform the update
-	result := db.Model(&KConnectSink{}).Where("name LIKE ?", "s3%").Where("id = ?", sink.ID).Update("config", updateJSON)
+	result := db.Model(&KConnectSink{}).Where("name LIKE ?", "s3%").Where("id = ?", sink.ID).Update("config", string(updateJSON))
 	if result.Error != nil {
 		return result.Error
 	}
